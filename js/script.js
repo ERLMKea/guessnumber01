@@ -37,9 +37,29 @@ function checkNumber(btn) {
   inpGuess.style.fontSize = '22px';
   console.log("fontsize=" + inpGuess.style.fontSize);
 
+  if (!numguess) {
+    lblMessage.textContent = "💥 Not a number";
+  } else {
+    if (numguess > randomNumber) {
+      lblMessage.textContent = "for stort tal";
+    } else {
+      if (numguess < randomNumber) {
+        lblMessage.textContent = "for lille tal";
+      } else {
+        lblMessage.textContent = "😎 du har gættet tallet";
+      }
+    }
+  }
+
 }
 
+let randomNumber = 0;
+function genRanNumber() {
+  randomNumber = Math.random();
+  randomNumber = Math.floor(randomNumber * 20) + 1;
+}
 
 pbCheck.addEventListener('click', checkNumber);
 
+genRanNumber();
 
